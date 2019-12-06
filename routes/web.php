@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('quangket', function () {
     return view('welcome');
 });
+
+Route::prefix('admin')->group(function (){
+    Route::get('', function () {
+        return view('welcome');
+    });
+    Route::get('/ket', function () {
+        return view('welcome');
+    });
+});
+
+Route::get('login', 'UserController@getLogin')->name('login.show');
+
+Route::post('login', 'UserController@postLogin')->name('login.login');
+
+Route::get('register', function () {
+    return view('register');
+})->name('register.show');
